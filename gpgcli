@@ -32,7 +32,7 @@ create_key() {
   gpg --full-generate-key
   list_keys
   echo 'Select newly created GPG key for exporting:'
-  select key in "${keys[@]}"; do
+  COLUMNS=1 select key in "${keys[@]}"; do
     if [[ -n "$key" ]]; then
       local key_id="${key%% *}"
       clear
@@ -67,7 +67,7 @@ key_actions() {
   local key_id="${key%% *}"
   while true; do
     echo "You chose: $key"
-    select action in 'Revoke key' 'Delete key' 'Main Menu'; do
+    COLUMNS=1 select action in 'Revoke key' 'Delete key' 'Main Menu'; do
       case "$REPLY" in
         1)
           read -p 'Are you sure you wish to revoke? (y/N): ' confirm
@@ -116,7 +116,7 @@ while true; do
   list_keys
   # Menu
   printf "%s\n\n" 'Choose GPG key:'
-  select key in "${keys[@]}" 'Create key' 'Exit'; do
+  COLUMNS=1 select key in "${keys[@]}" 'Create key' 'Exit'; do
     if [[ "$REPLY" -gt 0 && "$REPLY" -le "${#keys[@]}" ]]; then
       selected_key="${keys[$REPLY-1]}"
       clear
