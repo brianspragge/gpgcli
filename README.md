@@ -16,3 +16,9 @@ Choose GPG key:
 ```bash
 Smell ya later!
 ```
+
+# PREVIEW
+![gpgcli in action](image.png)
+![gpgcli in action](image2.png)
+![gpgcli in action](image3.png)
+![gpgcli in action](image4.png)
